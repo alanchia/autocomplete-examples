@@ -38,7 +38,7 @@ cddocker() {
 
 _cddocker_complete() {
   local cur="\${COMP_WORDS[COMP_CWORD]}"
-  local basedir=~/git
+  local basedir=~/
 
   local matches=\$(compgen -W "\$(ls -1d \${basedir}/docker*/ 2>/dev/null | xargs -n1 basename)" -- "\$cur")
   COMPREPLY=( \$matches )
