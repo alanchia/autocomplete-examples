@@ -1,6 +1,8 @@
 #!/bin/sh
 
 cat <<EOF >> ~/.bashrc
+
+## BEGIN of autocomplete block
 cdansible() {
   cd ~/git/"\$1"
 }
@@ -40,5 +42,18 @@ _cddocker_complete() {
   COMPREPLY=( \$matches )
 }
 
-complete -F _cddocker_complete c
+complete -F _cddocker_complete cddocker
 
+
+cdkia() {
+  cd ~/git/kiamol/"\$1"
+}
+
+_cdkia_complete() {
+  local cur="\${COMP_WORDS[COMP_CWORD]}"
+  local basedir=~/git/kiamol
+  local matches=\$(compgen -W "\$(ls -1d \${basedir}/*/ 2>/dev/null | xargs -n1 basename)" -- "\$cur")
+  COMPREPLY=( \$matches )
+}
+
+complete -F _cdkia_complete cdkia
